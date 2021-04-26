@@ -1,65 +1,40 @@
-import Head from 'next/head'
-import styles from '../styles/Home.module.css'
-
-export default function Home() {
+import Link from "next/link";
+import Image from "next/image";
+const Index = () => {
+  const my = [
+    { v: "car", p: "surafel" },
+    { v: "airplane", p: "surafel" },
+    { v: "boat", p: "surafel" },
+  ];
   return (
-    <div className={styles.container}>
-      <Head>
-        <title>Create Next App</title>
-        <link rel="icon" href="/favicon.ico" />
-      </Head>
-
-      <main className={styles.main}>
-        <h1 className={styles.title}>
-          Welcome to <a href="https://nextjs.org">Next.js!</a>
-        </h1>
-
-        <p className={styles.description}>
-          Get started by editing{' '}
-          <code className={styles.code}>pages/index.js</code>
-        </p>
-
-        <div className={styles.grid}>
-          <a href="https://nextjs.org/docs" className={styles.card}>
-            <h3>Documentation &rarr;</h3>
-            <p>Find in-depth information about Next.js features and API.</p>
-          </a>
-
-          <a href="https://nextjs.org/learn" className={styles.card}>
-            <h3>Learn &rarr;</h3>
-            <p>Learn about Next.js in an interactive course with quizzes!</p>
-          </a>
-
-          <a
-            href="https://github.com/vercel/next.js/tree/master/examples"
-            className={styles.card}
+    <div>
+      <h1>Home page</h1>
+      <Image
+        src="/images/ubuntu.png"
+        width={500}
+        height={500}
+        alt="Picture of the author"
+        // layout="fill"
+        objectFit="cover"
+        quality={100}
+      />
+      {my.map((vehicle) => (
+        <div>
+          {/* <Link as={`${vehicle.v}/${vehicle.p}`} href="/[vehicle]/[person]">
+            <a>Navigate to my {vehicle.v}</a>
+          </Link> */}
+          <Link
+            href={{
+              pathname: "/[vehicle]/[person]",
+              query: { vehicle: vehicle.v, person: vehicle.p },
+            }}
           >
-            <h3>Examples &rarr;</h3>
-            <p>Discover and deploy boilerplate example Next.js projects.</p>
-          </a>
-
-          <a
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-            className={styles.card}
-          >
-            <h3>Deploy &rarr;</h3>
-            <p>
-              Instantly deploy your Next.js site to a public URL with Vercel.
-            </p>
-          </a>
+            <a>Navigate to my {vehicle.v}</a>
+          </Link>
         </div>
-      </main>
-
-      <footer className={styles.footer}>
-        <a
-          href="https://vercel.com?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Powered by{' '}
-          <img src="/vercel.svg" alt="Vercel Logo" className={styles.logo} />
-        </a>
-      </footer>
+      ))}
     </div>
-  )
-}
+  );
+};
+
+export default Index;
