@@ -1,11 +1,7 @@
 import Link from "next/link";
 import Image from "next/image";
-const Index = () => {
-  const my = [
-    { v: "car", p: "surafel" },
-    { v: "airplane", p: "surafel" },
-    { v: "boat", p: "surafel" },
-  ];
+import my from "../helper/data";
+const index = () => {
   return (
     <div>
       <h1>Home page</h1>
@@ -20,9 +16,6 @@ const Index = () => {
       />
       {my.map((vehicle) => (
         <div>
-          {/* <Link as={`${vehicle.v}/${vehicle.p}`} href="/[vehicle]/[person]">
-            <a>Navigate to my {vehicle.v}</a>
-          </Link> */}
           <Link
             href={{
               pathname: "/[vehicle]/[person]",
@@ -37,4 +30,4 @@ const Index = () => {
   );
 };
 
-export default Index;
+export default index;

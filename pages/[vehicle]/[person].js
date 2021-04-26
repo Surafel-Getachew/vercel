@@ -1,5 +1,5 @@
 import { useRouter } from "next/router";
-const Person = () => {
+const person = () => {
   const router = useRouter();
   const { vehicle, person } = router.query;
   return (
@@ -11,4 +11,4 @@ const Person = () => {
   );
 };
 
-export default Person;
+export default person;
